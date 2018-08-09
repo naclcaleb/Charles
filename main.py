@@ -17,18 +17,18 @@ from Notifications import Notifications
 import time
 from SMS import SMS
 
-contact_addr = "Dad"
+contact_addr = ""
 textMode = False
 emailMode = False
 
-appId = 'AJ3HY7-G986LE3E37'
+appId = 'Wolfram App ID'
 
 client = wolframalpha.Client(appId)
 
 def SAY(text):
   os.system("./speakit.sh " + '"' + text + '"') 
 
-msg = "You are boring"
+msg = ""
 def resolveListOrDict(variable):
   if isinstance(variable, list):
     return variable[0]['plaintext']
