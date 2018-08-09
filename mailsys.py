@@ -9,13 +9,13 @@ UIDs = []
 def loadMail():
     global UIDs
     imapObj = imapclient.IMAPClient('imap.gmail.com',ssl=True)
-    imapObj.login('naclcaleb@gmail.com','cybersecurity7')
+    imapObj.login('example@gmail.com','example_password')
     imapObj.select_folder("INBOX",readonly=False)
     UIDs = imapObj.search(["UNSEEN"])
     imapObj.set_flags(UIDs,"\SEEN")
 def getContactList():
     imapObj = imapclient.IMAPClient('imap.gmail.com',ssl=True)
-    imapObj.login('naclcaleb@gmail.com','cybersecurity7')
+    imapObj.login('example@gmail.com','example_password')
     imapObj.select_folder("INBOX",readonly=False)
     global UIDs
     contacts = []
