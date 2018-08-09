@@ -7,7 +7,7 @@ class Email(Driver):
     device_name = "email_smtp_client"
     def send(self, data):
         #Data in form ["address","title","content"]
-        fr = "naclcaleb@gmail.com"
+        fr = "example@gmail.com"
         to = data[0]
         msg = MIMEMultipart()
         msg["From"] = fr
@@ -22,6 +22,6 @@ class Email(Driver):
         server.ehlo()
         server.starttls()
         server.ehlo()
-        server.login("naclcaleb@gmail.com","cybersecurity7")
+        server.login("example@gmail.com","example_password")
         text = msg.as_string()
         server.sendmail(fr,to,text)
