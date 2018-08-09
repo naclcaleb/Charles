@@ -1,3 +1,8 @@
+access_token = ""
+
+
+
+
 import wolframalpha as wolframalpha
 import requests
 import json
@@ -81,7 +86,7 @@ def send():
     elif msg.lower().replace("hey charles","").replace("charles","") == "":
       SAY("I do not have enough information to answer your request")
     else:
-        r = requests.post("https://api.api.ai/v1/query", data=("{query:'" + msg.lower().replace("'","").replace("hey charles","").replace("charles","") + "',lang:'en',sessionId:'yaydevdiner'}"), headers={"Content-type":"application/json; charset=utf-8","Authorization":"Bearer f786fef55008491fb8422cea2be85eb1"})
+        r = requests.post("https://api.api.ai/v1/query", data=("{query:'" + msg.lower().replace("'","").replace("hey charles","").replace("charles","") + "',lang:'en',sessionId:'yaydevdiner'}"), headers={"Content-type":"application/json; charset=utf-8","Authorization":"Bearer " + access_token})
         obj = json.loads(r.text)
         
        
