@@ -25,4 +25,3 @@ def changealarm(t1,t2):
         original = file.read()
         original.replace(hr12,hr12_b)
         file.write(original)
-    os.system("sudo killall updatetime && sudo updatetime")
