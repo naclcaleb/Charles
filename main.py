@@ -1,7 +1,6 @@
 import wolframalpha as wolframalpha
 import requests
 import json
-import pyttsx3
 import os
 import speech_recognition as sr
 import sys
