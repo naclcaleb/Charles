@@ -1,8 +1,11 @@
 from Driver import Driver
 from twilio.rest import Client
 
-account_sid = 'ACef8aef2e6fa3ad302eafafc6efda8cb9'
-auth_token = '588e948406b696dbaa539d474cfa08fb'
+#Your Twilio Account SID
+account_sid = ''
+
+#Your Twilio Account Auth Token
+auth_token = ''
 
 class SMS(Driver):
     device_name = "phone"
