@@ -10,6 +10,7 @@ import os
 import speech_recognition as sr
 import sys
 from datetime import datetime
+
 import alarm
 from WeatherMap import WeatherMap
 from PyDictionary import PyDictionary
@@ -28,6 +29,15 @@ emailMode = False
 appId = 'Wolfram App ID'
 
 client = wolframalpha.Client(appId)
+
+#Reset dialog file on startup
+with open("/var/www/html/dialog.txt","w") as file:
+  file.write("")
+
+def Print(text):
+  print(text)
+  with open("/var/www/html/dialog.txt","a+") as file:
+    file.write(text)
 
 def SAY(text):
   os.system("./speakit.sh " + '"' + text + '"') 
@@ -102,7 +112,7 @@ def send():
         elif obj["result"]["speech"] == "weather()":
             weather = WeatherMap()
             wtxt = weather.get("all")
-            print(wtxt)
+            Print(wtxt)
             SAY(wtxt)
         elif obj["result"]["speech"] == "time()":
             t = datetime.now().strftime("%I:%M %p")
@@ -112,7 +122,7 @@ def send():
             query = query.replace("charles","")
             saytext = str(wolframsearch(query))
             saytext = saytext.replace("'","")
-            print(saytext)
+            Print(saytext)
             SAY(saytext)
         elif obj["result"]["speech"] == "setmem":
             mem = Memory()
@@ -129,7 +139,7 @@ def send():
             contact_name = obj["result"]['speech'][6:-1]
             srch = Contacts()
             contact_addr = srch.get([contact_name,1])
-            print(contact_addr)
+            Print(contact_addr)
             emailMode = True
             textMode = False
             SAY("Ok, what would you like to say?")
@@ -138,13 +148,13 @@ def send():
             contact_name = obj["result"]["speech"][4:-1]
             srch = Contacts()
             contact_addr = srch.get([contact_name,2])
-            print(contact_addr)
+            Print(contact_addr)
             SAY("Ok, what would you like to say?")
             textMode = True
             emailMode = False
         else:
             SAY(obj["result"]['speech'])
-        print(obj["result"]["speech"])
+        Print(obj["result"]["speech"])
     
     return emailMode
     engine.runAndWait()
@@ -181,8 +191,8 @@ for i, microphone_name in enumerate(mic_list):
 
 
 def returnToActivation():
-    print("Restarting")
-    print(emailMode)
+    Print("Restarting")
+    Print(emailMode)
 
 def trueOrFalse():
     global source
@@ -190,7 +200,7 @@ def trueOrFalse():
     audio = r.listen(source)
     try:
         txt = r.recognize_google(audio)
-        print(txt)
+        Print(txt)
         if "yes" in txt or "yea" in txt:
             return True
         else:
@@ -222,7 +232,7 @@ def checkEmail(e):
     else:
         SAY("Ok, try again")
         newE = listenForText()
-        print(newE)
+        Print(newE)
         checkEmail(newE)
 
 
@@ -241,7 +251,7 @@ def checkSMS(e):
     else:
         SAY("Ok, try again")
         newE = listenForText()
-        print(newE)
+        Print(newE)
         checkSMS(newE)
 
 
@@ -253,25 +263,25 @@ while True:
         lst = n.get()
         if len(lst)>0:
             for i in range(0,len(lst)):
-                print(lst[i])
+                Print(lst[i])
                 SAY(lst[i])
                 n.delete(i)
         r.adjust_for_ambient_noise(source)
-        print ("Say Something")
+        Print ("Say Something")
        
         audio = r.listen(source)
              
         try:
             text = r.recognize_google(audio)
-            print(text)
+            Print(text)
             
             msg = text.strip()
-            print(emailMode)
+            Print(emailMode)
             if emailMode == True:
-                print("Email")
+                Print("Email")
                 checkEmail(msg)
             elif textMode == True:
-                print("SMS")
+                Print("SMS")
                 checkSMS(msg)
             else:
                 if "charles" in msg.lower():
@@ -280,8 +290,8 @@ while True:
             returnToActivation()
          
         except sr.UnknownValueError:
-            print("Google Speech Recognition could not understand audio")
+            Print("Google Speech Recognition could not understand audio")
             returnToActivation()
         except sr.RequestError as e:
-            print("Could not request results from Google Speech Recognition service; {0}".format(e))
+            Print("Could not request results from Google Speech Recognition service; {0}".format(e))
             returnToActivation()
