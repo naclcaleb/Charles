@@ -27,7 +27,7 @@ To get the SMS messaging system running you will have to sign up for an account 
 
 You also need to set up your contacts in the `contacts.list` file. For each contact, make a new line with the format:
 
-Name, Email, Phone Number
+Name,Email,Phone Number
 
 NOTE: Do not put any spaces between the information and the commas!
 
