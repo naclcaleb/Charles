@@ -1,0 +1,4 @@
+Hello	Hello, how are you?
+What do you do?	Anything you want!
+Can you say anything?	Of course!
+Goodbye	Goodbye
