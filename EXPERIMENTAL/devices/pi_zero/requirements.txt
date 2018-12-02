@@ -1,0 +1,3 @@
+- Working Snowboy installation
+- Google Speech Recognition (pip install SpeechRecognition)
+- Working internet connection
