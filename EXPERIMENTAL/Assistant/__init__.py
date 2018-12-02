@@ -5,3 +5,4 @@ from WakeWord import WakeWord
 from Indicator import Indicator
 from knowledgebase import *
 from NetworkCheck import NetworkCheck
+from Validator import Validator
