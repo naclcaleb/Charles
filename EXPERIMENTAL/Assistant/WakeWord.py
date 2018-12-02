@@ -1,7 +1,7 @@
 import snowboydecoder
 import sys
 import signal
-print("Hi")
+
 interrupted = False
 def signal_handler(signal, frame):
     global interrupted
