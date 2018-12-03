@@ -1,7 +1,11 @@
 from flask import Flask
 from flask import request
 from Assistant import *
+import MySQLdb
 app = Flask(__name__)
+
+conn = MySQLdb.connect(host="localhost",user="<username>",passwd="<pass>",db="hoogle")
+cursor = conn.cursor()
 
 validator = Validator()
 network = Seq2Seq()
