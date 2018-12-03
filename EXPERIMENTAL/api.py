@@ -21,6 +21,6 @@ def give_response():
         response = network.generateResponse(req_txt)
         return response
     else:
-        return "INVALID AUTH TOKEN"
+        return "I'm sorry, but it seems you may not have registered your device with Hoogle and obtained an auth token. Please do so now, so we can have you up and running with your Charles device."
 
         
