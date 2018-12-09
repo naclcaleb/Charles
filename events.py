@@ -27,4 +27,4 @@ class Handler:
                 i.callback()
         
           
-
+handler = Handler()
