@@ -1,4 +1,6 @@
 # Charles
+
+##### If you want to contribute, you'd do best by going to the `experimental` branch instead.
 To get your Charles up and running, download the zip file and extract it in a folder of your choice. 
 Open up a terminal in the directory, and run:
 
