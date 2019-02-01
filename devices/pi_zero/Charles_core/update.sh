@@ -9,3 +9,5 @@ wget https://raw.githubusercontent.com/naclcaleb/Charles/experimental/devices/pi
 wget https://raw.githubusercontent.com/naclcaleb/Charles/experimental/devices/pi_zero/Charles_core/Voice.py
 wget https://raw.githubusercontent.com/naclcaleb/Charles/experimental/devices/pi_zero/Charles_core/WakeWord.py
 wget https://github.com/naclcaleb/Charles/blob/experimental/devices/pi_zero/Charles_core/__init__.py
+cd ..
+wget https://raw.githubusercontent.com/naclcaleb/Charles/experimental/devices/pi_zero/Charles_core/update.sh
